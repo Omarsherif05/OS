@@ -23,6 +23,7 @@ public class readyQueue {
         if(!readyQueue.isEmpty()) {
             process temp = readyQueue.peek();
             readyQueue.remove();
+            return temp;
         }
         return null;
     }
