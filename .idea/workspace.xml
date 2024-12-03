@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f7249-3716-47f6-a7bc-7c6bc8cb731d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MasterCore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Process.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReadyQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SharedMemory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SlaveCore.java" afterDir="false" />
+    <list default="true" id="e11f7249-3716-47f6-a7bc-7c6bc8cb731d" name="Changes" comment="ssss">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadyQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReadyQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/SharedMemory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +25,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Omarsherif05/OS.git",
+    "accountId": "4935fd3a-c783-4a5e-a622-16157eba02d2"
+  }
+}]]></component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="true" />
   </component>
@@ -60,7 +64,10 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "Errors",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -121,8 +128,16 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ssss" />
+    <option name="LAST_COMMIT_MESSAGE" value="ssss" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
