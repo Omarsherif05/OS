@@ -1,27 +1,15 @@
 package process;
 
-import Program_parser.Instruction;
-
 import java.util.List;
 
 public class process {
+    int processId;
+    List<String> instructions;
+    PCB pcb;
 
-    private final int process_id;
-    private final List<Instruction> instructions;
-    private final PCB pcb;
-
-    public process(int process_id, List<Instruction> instructions, PCB pcb) {
-        this.process_id = process_id;
+    public process(int processId, List<String> instructions) {
+        this.processId = processId;
         this.instructions = instructions;
-        this.pcb = new PCB(process_id);
+        this.pcb = new PCB(processId, instructions.size());
     }
-
-    public Instruction getCurrentInstruction() {
-        Instruction inst = instructions.get(pcb.getProgramCounter());
-        pcb.updateProgramCounter();
-        return inst;
-    }
-
-
-
 }

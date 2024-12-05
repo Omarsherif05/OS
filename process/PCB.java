@@ -1,30 +1,12 @@
 package process;
-
 public class PCB {
+    int processId;
+    int programCounter;
+    int instructionCount;
 
-    private int programCounter;
-    private boolean isComplete;
-    private final int PID;
-
-    public PCB(int PID) {
+    public PCB(int processId, int instructionCount) {
+        this.processId = processId;
         this.programCounter = 0;
-        this.isComplete = false;
-        this.PID = PID;
+        this.instructionCount = instructionCount;
     }
-
-
-
-    public void setProcessCompleted()
-    {
-        this.isComplete = true;
-    }
-
-    public int getProgramCounter() {
-        return this.programCounter;
-    }
-
-    public void updateProgramCounter(){
-        programCounter++;
-    }
-
 }
