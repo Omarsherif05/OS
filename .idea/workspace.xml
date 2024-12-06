@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2c3c0369-6404-4542-9d1d-a0e520444f59" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/PACKAGE_NAME/MasterCore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Memory/SharedMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Memory/SharedMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program_parser/Instruction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program_parser/programParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Program_parser/programParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Queues/readyQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Queues/readyQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SlaveCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/PACKAGE_NAME/SlaveCore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/process/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/PCB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/process/process.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/process.java" afterDir="false" />
     </list>
@@ -37,7 +37,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Omarsherif05/OS.git&quot;,
-    &quot;accountId&quot;: &quot;5f77df3b-bc23-4a37-93d2-e9daa341ec8e&quot;
+    &quot;accountId&quot;: &quot;8ae5c38d-a9e4-4ce5-ad21-d43e16f60760&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -55,22 +55,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/uni/Year 2/DS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/uni/Year 2/DS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <module name="OS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -98,6 +107,7 @@
       <workItem from="1733411334793" duration="39000" />
       <workItem from="1733411424134" duration="815000" />
       <workItem from="1733412273794" duration="35000" />
+      <workItem from="1733473747474" duration="3511000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />

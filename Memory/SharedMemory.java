@@ -8,6 +8,7 @@ public class SharedMemory {
     public void assign(String variable, int value) {
         memory.put(variable, value);
         System.out.println("Assigned " + variable + " = " + value);
+
     }
 
     public int get(String variable) {
