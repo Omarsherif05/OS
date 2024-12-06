@@ -27,4 +27,7 @@ public class readyQueue {
         }
         return null;
     }
+    public boolean isEmpty() {
+        return readyQueue.isEmpty();
+    }
 }
