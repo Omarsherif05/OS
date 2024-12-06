@@ -7,8 +7,11 @@ public class PCB {
 
     public PCB(int processId, int instructionCount) {
         this.processId = processId;
+
         this.programCounter = 0;
+
         this.instructionCount = instructionCount;
+
     }
 
     public int getProcessId() {
