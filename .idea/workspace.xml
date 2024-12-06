@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c3c0369-6404-4542-9d1d-a0e520444f59" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/Program_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/process/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/process/SJFScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/process/SlaveCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/PACKAGE_NAME/MasterCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Memory/SharedMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Memory/SharedMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SlaveCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/PACKAGE_NAME/SlaveCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/process/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/PCB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/process/process.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/process.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PACKAGE_NAME/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/MasterCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PACKAGE_NAME/SlaveCore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Queues/readyQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Queues/readyQueue.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +59,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -72,13 +75,37 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\IdeaProjects\OS" />
+      <recent name="C:\Users\DELL\IdeaProjects\OS\process" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="process.Main" />
+      <module name="OS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="process.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="OS" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
