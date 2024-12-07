@@ -1,28 +1,25 @@
 package Project;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Comparator;
-
 public class SJFScheduler {
-    public synchronized void sortReadyQueue(ReadyQueue readyQueue) {
-        List<Process> processes = new ArrayList<>();
+    public Process getShortestJob(ReadyQueue readyQueue) {
 
-        // Extract processes from readyQueue and sort them by instruction count
-        while (!readyQueue.isEmpty()) {
-            processes.add(readyQueue.getNextProcess());
-        }
+            Process shortestJob = null;
+            int minInstructionCount = Integer.MAX_VALUE;
 
-        // Sort processes based on instruction count in their PCB
-        processes.sort(Comparator.comparingInt(process -> process.getPcb().getInstructionCount()));
+            // Iterate through the processes in the ready queue and find the one with the least instruction count
+            for (Process process : readyQueue.getProcesses()) { // Assuming `getProcesses()` retrieves all processes
+                int instructionCount = process.getPcb().getInstructionCount();
+                if (instructionCount < minInstructionCount) {
+                    minInstructionCount = instructionCount;
+                    shortestJob = process;
+                }
+            }
 
-        // Add sorted processes back to the ReadyQueue
-        for (Process process : processes) {
-            readyQueue.addProcess(process);
-        }
+            // If a process with the smallest instruction count was found, remove it from the queue
+            if (shortestJob != null) {
+                readyQueue.removeProcess(shortestJob);
+            }
 
-        // Debug: Print sorted processes
-        System.out.println("SJFScheduler: Processes sorted by instruction count:");
-
+            return shortestJob;
     }
 }

@@ -9,8 +9,6 @@ public class Main {
         String filePath = "Program_2.txt";
         Parser.loadProcessesFromFile(filePath, readyQueue);
 
-        SJFScheduler sjfScheduler = new SJFScheduler();
-      sjfScheduler.sortReadyQueue(readyQueue);
 
         // Start the MasterCore
         MasterCore masterCore = new MasterCore(readyQueue, sharedMemory);
