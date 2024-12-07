@@ -1,67 +1,82 @@
 package Project;
 
-import java.util.Scanner;
-
 public class SlaveCore extends Thread {
     private final int coreId;
     private final SharedMemory sharedMemory;
     private Process currentProcess;
-    private boolean idle;
     private boolean terminate;
 
     public SlaveCore(int coreId, SharedMemory sharedMemory) {
         this.coreId = coreId;
         this.sharedMemory = sharedMemory;
-        this.idle = true;
+        this.currentProcess = null;
         this.terminate = false;
-    }
-
-    public synchronized boolean isIdle() {
-        return idle;
     }
 
     public synchronized void assignTask(Process process) {
         this.currentProcess = process;
-        this.idle = false;
-        notify();
+        notify(); // Notify the thread to start executing the task
     }
 
     public synchronized void terminate() {
         this.terminate = true;
-        notify();
+        notify(); // Notify the thread to terminate
+    }
+
+    public synchronized boolean isIdle() {
+        return currentProcess == null;
+    }
+
+    public synchronized int getCoreId() {
+        return coreId;
+    }
+
+    public synchronized int getCurrentProcessId() {
+        return currentProcess != null ? currentProcess.getProcessId() : -1;
     }
 
     @Override
     public void run() {
-        while (true) {
+        while (!terminate) {
             synchronized (this) {
                 while (currentProcess == null && !terminate) {
                     try {
-                        wait();
+                        wait(); // Wait for a task to be assigned
                     } catch (InterruptedException e) {
-                        System.err.println("Core " +coreId+ " interrupted.");
-                        return;
+                        e.printStackTrace();
                     }
                 }
 
                 if (terminate && currentProcess == null) {
-                    System.out.println("Core " +coreId+ " terminating.");
                     return;
                 }
             }
 
-            executeProcess();
-
-            synchronized (this) {
-                currentProcess = null;
-                idle = true;
+            // Execute the process one instruction at a time
+            while (currentProcess != null) {
+                executeNextInstruction();
             }
         }
     }
 
-    private void executeProcess() {
-        for (String instruction : currentProcess.getInstructions()) {
+    private void executeNextInstruction() {
+        synchronized (this) {
+            String instruction = currentProcess.getInstructions().get(currentProcess.getPcb().getProgramCounter());
             executeInstruction(instruction);
+            currentProcess.getPcb().incrementProgramCounter();
+
+            // Check if the process is complete
+            if (currentProcess.getPcb().getProgramCounter() >= currentProcess.getInstructions().size()) {
+                System.out.println("Core " + coreId + " completed Process " + currentProcess.getProcessId());
+                currentProcess = null; // Mark the process as completed
+            }
+        }
+
+        // Simulate a single clock cycle delay
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -71,40 +86,21 @@ public class SlaveCore extends Thread {
             switch (parts[0]) {
                 case "assign":
                     if (parts[2].equals("input")) {
-                        System.out.print("Core " +coreId+" Enter value for " + parts[1] + ": ");
-                        Scanner scanner = new Scanner(System.in);
-                        int value = scanner.nextInt();
-                        System.out.println("Core " +coreId+" Assigned " + parts[1] + " to " + value);
-                        sharedMemory.assign(parts[1], value);
-                    } else if (parts[2].equals("add") || parts[2].equals("subtract") || parts[2].equals("multiply") || parts[2].equals("divide")) {
-                        String operation = parts[2];
-                        String var1 = parts[3];
-                        String var2 = parts[4];
-                        int result;
-
-                        switch (operation) {
-                            case "add":
-                                result = sharedMemory.add(var1, var2);
-                                break;
-                            case "subtract":
-                                result = sharedMemory.subtract(var1, var2);
-                                break;
-                            case "multiply":
-                                result = sharedMemory.multiply(var1, var2);
-                                break;
-                            case "divide":
-                                result = sharedMemory.divide(var1, var2);
-                                break;
-                            default:
-                                throw new IllegalArgumentException("Unknown operation: " + operation);
-                        }
+                        System.out.print("Core " + coreId + " Enter value for " + parts[1] + ": ");
+                        sharedMemory.assign(parts[1], new java.util.Scanner(System.in).nextDouble());
+                    } else if (parts.length >= 4) {
+                        double result = switch (parts[2]) {
+                            case "add" -> sharedMemory.add(parts[3], parts[4]);
+                            case "subtract" -> sharedMemory.subtract(parts[3], parts[4]);
+                            case "multiply" -> sharedMemory.multiply(parts[3], parts[4]);
+                            case "divide" -> sharedMemory.divide(parts[3], parts[4]);
+                            default -> throw new IllegalArgumentException("Unknown operation");
+                        };
                         sharedMemory.assign(parts[1], result);
-                        System.out.println("Core " +coreId+ " Assigned " + parts[1] + " to " + result);
                     }
                     break;
                 case "print":
-                    String variable = parts[1];
-                    System.out.println("Core " +coreId+ " Print: " + variable + " = " + sharedMemory.get(variable));
+                    System.out.println("Core " + coreId + " Print: " + parts[1] + " = " + sharedMemory.get(parts[1]));
                     break;
             }
         }
