@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2c3c0369-6404-4542-9d1d-a0e520444f59" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Memory/SharedMemory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Program_parser/programParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Queues/readyQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/process/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/process/MasterCore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/process/PCB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/process/Scheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/process/SlaveCore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/process/process.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/MasterCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/SJFScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/SJFScheduler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,25 +52,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Project.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/uni/Year 2/DS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Project.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/uni/Year 2/DS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\IdeaProjects\OS" />
@@ -116,11 +110,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Unnamed" />
-      <item itemvalue="Application.Project.Main" />
-      <item itemvalue="Application.Main" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Project.Main" />
@@ -161,7 +150,7 @@
       <workItem from="1733529236178" duration="976000" />
       <workItem from="1733560067995" duration="778000" />
       <workItem from="1733572733485" duration="36000" />
-      <workItem from="1733573107273" duration="1718000" />
+      <workItem from="1733573107273" duration="2376000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -187,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733320165208</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=".">
+      <option name="closed" value="true" />
+      <created>1733575190373</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733575190373</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

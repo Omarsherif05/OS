@@ -5,6 +5,7 @@ import java.util.List;
 public class MasterCore extends Thread {
     private final ReadyQueue readyQueue;
     private final List<SlaveCore> slaves;
+    private final SJFScheduler sjfScheduler;
 
     public MasterCore(ReadyQueue readyQueue, SharedMemory sharedMemory) {
         this.readyQueue = readyQueue;
@@ -12,6 +13,7 @@ public class MasterCore extends Thread {
                 new SlaveCore(1, sharedMemory),
                 new SlaveCore(2, sharedMemory)
         );
+        this.sjfScheduler = new SJFScheduler();
     }
 
     @Override
@@ -24,7 +26,7 @@ public class MasterCore extends Thread {
         // Assign processes to available slave cores
         while (!readyQueue.isEmpty() || anyCoreProcessing()) {
             synchronized (this) {
-                Process process = readyQueue.getNextProcess();
+                Process process = sjfScheduler.getShortestJob(readyQueue);
                 if (process != null) {
                     SlaveCore availableSlave = getAvailableSlave();
                     if (availableSlave != null) {
