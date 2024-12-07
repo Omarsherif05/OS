@@ -17,7 +17,7 @@ public class ReadyQueue {
     }
 
     public Process getNextProcess() {
-        return readyQueue.poll(); // Retrieve and remove the head of the queue
+        return readyQueue.poll();
     }
 
     public boolean isEmpty() {
@@ -27,6 +27,6 @@ public class ReadyQueue {
         readyQueue.remove(process);
     }
     public synchronized List<Process> getProcesses() {
-        return new ArrayList<>(readyQueue); // Return a copy to prevent external modifications
+        return new ArrayList<>(readyQueue);
     }
 }

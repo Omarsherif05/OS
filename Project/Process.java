@@ -6,7 +6,6 @@ public class Process {
     private final PCB pcb;
     private final List<String> instructions;
 
-    // Modified constructor to accept instruction count directly
     public Process(int processId, List<String> instructions) {
         int instructionCount = calculateInstructionCount(instructions);
         this.pcb = new PCB(processId, instructionCount);
@@ -28,7 +27,6 @@ public class Process {
     public PCB getPcb() {
         return pcb;
     }
-
 
     private int calculateInstructionCount(List<String> instructions) {
         int count = 0;

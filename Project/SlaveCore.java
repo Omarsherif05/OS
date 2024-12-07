@@ -31,7 +31,6 @@ public class SlaveCore extends Thread {
         notify();
     }
 
-    @Override
     public void run() {
         while (true) {
             synchronized (this) {
@@ -80,7 +79,7 @@ public class SlaveCore extends Thread {
                         String operation = parts[2];
                         String var1 = parts[3];
                         String var2 = parts[4];
-                        int result;
+                        Double result = 0.0;
 
                         switch (operation) {
                             case "add":
@@ -95,8 +94,6 @@ public class SlaveCore extends Thread {
                             case "divide":
                                 result = sharedMemory.divide(var1, var2);
                                 break;
-                            default:
-                                throw new IllegalArgumentException("Unknown operation: " + operation);
                         }
                         sharedMemory.assign(parts[1], result);
                         System.out.println("Core " +coreId+ " Assigned " + parts[1] + " to " + result);

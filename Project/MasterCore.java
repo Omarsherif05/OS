@@ -18,12 +18,9 @@ public class MasterCore extends Thread {
 
     @Override
     public void run() {
-        // Start all slave cores
         for (SlaveCore slaveCore : slaves) {
             slaveCore.start();
         }
-
-        // Assign processes to available slave cores
         while (!readyQueue.isEmpty() || anyCoreProcessing()) {
             synchronized (this) {
                 Process process = sjfScheduler.getShortestJob(readyQueue);
@@ -35,22 +32,15 @@ public class MasterCore extends Thread {
                 }
             }
         }
-
-        // Signal all slaves to terminate after all tasks are done
         for (SlaveCore slaveCore : slaves) {
             slaveCore.terminate();
         }
-
-        // Wait for all slaves to finish
         for (SlaveCore slaveCore : slaves) {
             try {
                 slaveCore.join();
             } catch (InterruptedException e) {
-                System.err.println("MasterCore interrupted while waiting for slaves to terminate.");
             }
         }
-
-        System.out.println("MasterCore: All slave cores have terminated.");
     }
 
     private SlaveCore getAvailableSlave() {
