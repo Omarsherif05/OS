@@ -5,8 +5,8 @@ public class Main {
         ReadyQueue readyQueue = new ReadyQueue();
         SharedMemory sharedMemory = new SharedMemory();
 
-        String filePath = "Program_1.txt";
-        Parser.loadProcessesFromFile(filePath, readyQueue);
+        String filePath = "C:\\Users\\DELL\\IdeaProjects\\OS";
+        Parser.loadProcessesFromDirectory(filePath, readyQueue);
 
         MasterCore masterCore = new MasterCore(readyQueue, sharedMemory);
         masterCore.run();
