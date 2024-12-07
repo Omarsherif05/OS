@@ -5,15 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c3c0369-6404-4542-9d1d-a0e520444f59" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/Program_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/process/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/process/SJFScheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/process/SlaveCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/MasterCore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/PCB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/Parser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/Process.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/ReadyQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/SJFScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/SharedMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/SlaveCore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PACKAGE_NAME/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/process/MasterCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PACKAGE_NAME/SlaveCore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Queues/readyQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Queues/readyQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Memory/SharedMemory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program_parser/programParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Queues/readyQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/MasterCore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/PCB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/SJFScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/Scheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/SlaveCore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/process.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +50,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Omarsherif05/OS.git&quot;,
-    &quot;accountId&quot;: &quot;8ae5c38d-a9e4-4ce5-ad21-d43e16f60760&quot;
+    &quot;accountId&quot;: &quot;5f77df3b-bc23-4a37-93d2-e9daa341ec8e&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -60,6 +71,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.Project.Main.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -81,13 +93,26 @@
       <recent name="C:\Users\DELL\IdeaProjects\OS\process" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Project.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="process.Main" />
       <module name="OS" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="process.*" />
+          <option name="PATTERN" value="process.Main" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Project.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Project.Main" />
+      <module name="OS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Project.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,6 +128,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Project.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -135,6 +161,12 @@
       <workItem from="1733411424134" duration="815000" />
       <workItem from="1733412273794" duration="35000" />
       <workItem from="1733473747474" duration="3511000" />
+      <workItem from="1733500346967" duration="997000" />
+      <workItem from="1733525632465" duration="1472000" />
+      <workItem from="1733529236178" duration="976000" />
+      <workItem from="1733560067995" duration="778000" />
+      <workItem from="1733572733485" duration="36000" />
+      <workItem from="1733573107273" duration="1718000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
