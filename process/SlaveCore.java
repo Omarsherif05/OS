@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class SlaveCore extends Thread {
     private final int coreId;
     private final SharedMemory sharedMemory;
-    private final process program;
-    private final PCB pcb;
+    private process program;
+    private PCB pcb;
 
-    public SlaveCore(int coreId, SharedMemory sharedMemory, process program) {
+    public SlaveCore(int coreId, SharedMemory sharedMemory) {
         this.coreId = coreId;
         this.sharedMemory = sharedMemory;
         this.program = program;
@@ -100,5 +100,16 @@ public class SlaveCore extends Thread {
 
     public int getCoreId() {
         return this.coreId;
+    }
+
+    public boolean isBusy() {
+        return pcb.getProgramCounter() < pcb.getInstructionCount();
+    }
+
+    public void setProcess(process currentProcess) {
+        this.program = currentProcess;
+
+        this.pcb = currentProcess.getPcb();
+
     }
 }

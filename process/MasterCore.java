@@ -3,53 +3,26 @@ package process;
 import Memory.SharedMemory;
 import Queues.readyQueue;
 
-import java.util.ArrayList;
-import java.util.List;
+import static Program_parser.programParser.loadProgramFromFile;
 
-public class MasterCore {
-    private final SharedMemory sharedMemory;
-    private final readyQueue readyQueue; // Queue containing processes
-    private final List<SlaveCore> slaveCores; // List of slave cores for execution
+public class Main {
 
-    public MasterCore(SharedMemory sharedMemory, readyQueue readyQueue) {
-        this.sharedMemory = sharedMemory;
-        this.readyQueue = readyQueue;
-        this.slaveCores = new ArrayList<>();
-        // Initializing slave cores
-        this.slaveCores.add(new SlaveCore(1, sharedMemory, null));
-        this.slaveCores.add(new SlaveCore(2, sharedMemory, null));
-    }
+    public static void main(String[] args) {
+        // File path to read processes from
+        String filePath = "Program_2.txt";  // Update this path to your text file location
 
-    public void startExecution() {
-        // Start all slave cores
-        for (SlaveCore slaveCore : slaveCores) {
-            slaveCore.start();
-        }
+        // Initialize shared memory and ready queue
+        SharedMemory sharedMemory = new SharedMemory();
+        readyQueue queue = new readyQueue();
 
-        // Assign processes from the ready queue to the slave cores
-        while (!readyQueue.isEmpty()) {
-            process currentProcess = readyQueue.popProcess();
-            assignProcessToSlaveCore(currentProcess);
-        }
+        // Read and parse the text file to create processes
+        process program = loadProgramFromFile(filePath, 1);
+        queue.addProcess(program);
 
-        // Wait for all slave cores to finish their tasks
-        for (SlaveCore slaveCore : slaveCores) {
-            try {
-                slaveCore.join(); // Ensures that main thread waits for all slave cores to finish
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+        // Initialize the master core with the shared memory and ready queue
+        MasterCore masterCore = new MasterCore(sharedMemory, queue);
 
-    private void assignProcessToSlaveCore(process currentProcess) {
-        // Find an available slave core (one that is not busy)
-        for (SlaveCore slaveCore : slaveCores) {
-            if (!slaveCore.isAlive()) { // If the core is not executing, assign a new task
-                slaveCore = new SlaveCore(slaveCore.getCoreId(), sharedMemory, currentProcess);
-                slaveCore.start();
-                break;
-            }
-        }
+        // Start execution of processes
+        masterCore.startExecution();
     }
 }
