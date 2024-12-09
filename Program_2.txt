@@ -1,4 +1,4 @@
-assign ayyyyyyy input
+assign a input
 assign b input
 assign c subtract a b
 print c
