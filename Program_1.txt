@@ -1,4 +1,4 @@
-assign a input
+assign affff input
 assign b input
 assign z add a b 
 print z

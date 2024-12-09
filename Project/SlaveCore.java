@@ -9,18 +9,16 @@ public class SlaveCore extends Thread {
     public SlaveCore(int coreId, SharedMemory sharedMemory) {
         this.coreId = coreId;
         this.sharedMemory = sharedMemory;
-        this.currentProcess = null;
         this.terminate = false;
     }
 
     public synchronized void assignTask(Process process) {
         this.currentProcess = process;
-        notify(); // Notify the thread to start executing the task
     }
 
     public synchronized void terminate() {
         this.terminate = true;
-        notify(); // Notify the thread to terminate
+        notify();
     }
 
     public synchronized boolean isIdle() {
@@ -41,7 +39,7 @@ public class SlaveCore extends Thread {
             synchronized (this) {
                 while (currentProcess == null && !terminate) {
                     try {
-                        wait(); // Wait for a task to be assigned
+                        wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -52,27 +50,33 @@ public class SlaveCore extends Thread {
                 }
             }
 
-            // Execute the process one instruction at a time
-            while (currentProcess != null) {
+
+            if (currentProcess != null) {
                 executeNextInstruction();
             }
         }
     }
 
+
     private void executeNextInstruction() {
         synchronized (this) {
-            String instruction = currentProcess.getInstructions().get(currentProcess.getPcb().getProgramCounter());
-            executeInstruction(instruction);
-            currentProcess.getPcb().incrementProgramCounter();
+            if (currentProcess != null) {
+                int pc = currentProcess.getPcb().getProgramCounter();
+                if (pc < currentProcess.getInstructions().size()) {
+                    String instruction = currentProcess.getInstructions().get(pc);
+                    executeInstruction(instruction);
+                    currentProcess.getPcb().incrementProgramCounter();
+                }
 
-            // Check if the process is complete
-            if (currentProcess.getPcb().getProgramCounter() >= currentProcess.getInstructions().size()) {
-                System.out.println("Core " + coreId + " completed Process " + currentProcess.getProcessId());
-                currentProcess = null; // Mark the process as completed
+
+                if (currentProcess.getPcb().getProgramCounter() >= currentProcess.getInstructions().size()) {
+                    System.out.println("Core " + coreId + " completed Process " + currentProcess.getProcessId());
+                    currentProcess = null;
+                }
             }
         }
 
-        // Simulate a single clock cycle delay
+
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {

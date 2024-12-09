@@ -5,8 +5,8 @@ import java.util.List;
 public class MasterCore extends Thread {
     private final ReadyQueue readyQueue;
     private final List<SlaveCore> slaves;
-    private final SJFScheduler sjfScheduler; // Use SJF scheduler
-    private int clock = 0; // Global clock
+    private final SJFScheduler sjfScheduler;
+    private int clock = 0;
 
     public MasterCore(ReadyQueue readyQueue, SharedMemory sharedMemory) {
         this.readyQueue = readyQueue;
@@ -19,43 +19,57 @@ public class MasterCore extends Thread {
 
     @Override
     public void run() {
-        // Start slave cores
+
         for (SlaveCore slave : slaves) {
             slave.start();
         }
 
+        //cycle1
+        clock = 1;
+        for (SlaveCore slave : slaves) {
+            Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
+            if (nextProcess != null) {
+                slave.assignTask(nextProcess);
+            }
+        }
+        displaySystemStatus();
+        //cycle2
         while (!readyQueue.isEmpty() || anyCoreProcessing()) {
             synchronized (this) {
-                // Increment the global clock
                 clock++;
 
-                // Display system status at the start of each clock cycle
                 displaySystemStatus();
 
-                // Schedule a task for an idle core
-                Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
-                if (nextProcess != null) {
-                    SlaveCore availableCore = getAvailableSlave();
-                    if (availableCore != null) {
-                        availableCore.assignTask(nextProcess);
+                for (SlaveCore slave : slaves) {
+                    synchronized (slave) {
+                        slave.notify();
+                    }
+                }
+
+                for (SlaveCore slave : slaves) {
+                    if (slave.isIdle()) {
+                        Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
+                        if (nextProcess != null) {
+                            slave.assignTask(nextProcess);
+                        }
                     }
                 }
             }
 
-            // Allow some time for cores to execute
+
             try {
-                Thread.sleep(100); // Simulate a clock cycle delay
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
-        // Terminate slave cores
+
         for (SlaveCore slave : slaves) {
             slave.terminate();
         }
 
-        // Wait for all slave cores to finish execution
+
         for (SlaveCore slave : slaves) {
             try {
                 slave.join();
@@ -64,26 +78,29 @@ public class MasterCore extends Thread {
             }
         }
 
-        System.out.println("All processes completed.");
+        System.out.println("\nAll processes completed.");
     }
+
+
 
     private void displaySystemStatus() {
         System.out.println("\nClock Cycle: " + clock);
-        System.out.println("Ready Queue: " + readyQueue.getProcesses());
+
+
+        System.out.print("Ready Queue: ");
+        int i = 1;
+        for (Process process : readyQueue.getProcesses()) {
+            System.out.print("P" + i++ + " ");
+        }
+        System.out.println();
+
+
         for (SlaveCore slave : slaves) {
-            String status = slave.isIdle() ? "Idle" : "Executing Process " + slave.getCurrentProcessId();
+            String status = slave.isIdle() ? "Idle" : "Executing Process P" + slave.getCurrentProcessId();
             System.out.println("Core " + slave.getCoreId() + ": " + status);
         }
     }
 
-    private SlaveCore getAvailableSlave() {
-        for (SlaveCore slave : slaves) {
-            if (slave.isIdle()) {
-                return slave;
-            }
-        }
-        return null; // No idle core found
-    }
 
     private boolean anyCoreProcessing() {
         for (SlaveCore slave : slaves) {

@@ -5,11 +5,11 @@ import java.util.*;
 
 public class Parser {
 
-    // Method to load all processes from .txt files in the given directory
+
     public static void loadProcessesFromDirectory(String directoryPath, ReadyQueue readyQueue) {
         File directory = new File(directoryPath);
 
-        // Ensure the directory exists and is a directory
+
         if (directory.exists() && directory.isDirectory()) {
             File[] files = directory.listFiles();
 
@@ -27,11 +27,11 @@ public class Parser {
         }
     }
 
-    // Method to load a single process from a .txt file
+
     private static void loadProcessFromFile(File file, ReadyQueue readyQueue) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            int processId = file.hashCode(); // You can use any other unique identifier if needed
+            int processId = file.hashCode();
             List<String> instructions = new ArrayList<>();
 
             while ((line = br.readLine()) != null) {
@@ -39,10 +39,8 @@ public class Parser {
                     instructions.add(line.trim());
                 }
             }
-
-            // Create a Process from the instructions in the file
             Process process = new Process(processId, instructions);
-            readyQueue.addProcess(process);  // Add the process to the ready queue
+            readyQueue.addProcess(process);
             System.out.println("Loaded process from file: " + file.getName());
 
         } catch (IOException e) {
