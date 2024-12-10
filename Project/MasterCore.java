@@ -5,8 +5,8 @@ import java.util.List;
 public class MasterCore extends Thread {
     private final ReadyQueue readyQueue;
     private final List<SlaveCore> slaves;
-    private final SJFScheduler sjfScheduler; // Use SJF scheduler
-    private int clock = 0; // Global clock
+    private final SJFScheduler sjfScheduler;
+    private int clock = 0;
 
     public MasterCore(ReadyQueue readyQueue, SharedMemory sharedMemory) {
         this.readyQueue = readyQueue;
@@ -17,22 +17,18 @@ public class MasterCore extends Thread {
         this.sjfScheduler = new SJFScheduler();
     }
 
-    @Override
+
     public void run() {
-        // Start slave cores
         for (SlaveCore slave : slaves) {
             slave.start();
         }
 
         while (!readyQueue.isEmpty() || anyCoreProcessing()) {
             synchronized (this) {
-                // Increment the global clock
                 clock++;
 
-                // Display system status at the start of each clock cycle
                 displaySystemStatus();
 
-                // Schedule a task for an idle core
                 Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
                 if (nextProcess != null) {
                     SlaveCore availableCore = getAvailableSlave();
@@ -42,9 +38,8 @@ public class MasterCore extends Thread {
                 }
             }
 
-            // Allow some time for cores to execute
             try {
-                Thread.sleep(100); // Simulate a clock cycle delay
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -55,7 +50,6 @@ public class MasterCore extends Thread {
             slave.terminate();
         }
 
-        // Wait for all slave cores to finish execution
         for (SlaveCore slave : slaves) {
             try {
                 slave.join();
@@ -82,7 +76,7 @@ public class MasterCore extends Thread {
                 return slave;
             }
         }
-        return null; // No idle core found
+        return null;
     }
 
     private boolean anyCoreProcessing() {

@@ -5,7 +5,8 @@ public class Main {
         ReadyQueue readyQueue = new ReadyQueue();
         SharedMemory sharedMemory = new SharedMemory();
 
-        String filePath = "C:\\Users\\DELL\\IdeaProjects\\OS";
+        // Update the file path to the specified folder path
+        String filePath = "C:\\Users\\Karim\\IdeaProjects\\OS";
         Parser.loadProcessesFromDirectory(filePath, readyQueue);
 
         MasterCore masterCore = new MasterCore(readyQueue, sharedMemory);
