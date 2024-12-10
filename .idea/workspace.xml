@@ -8,18 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Program_2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Program_3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/MasterCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/SharedMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/SharedMemory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/SlaveCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/SlaveCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Program_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Program_2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/MasterCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/MasterCore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Process.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SJFScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SJFScheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SharedMemory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SharedMemory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +35,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Omarsherif05/OS.git&quot;,
-    &quot;accountId&quot;: &quot;8ae5c38d-a9e4-4ce5-ad21-d43e16f60760&quot;
+    &quot;accountId&quot;: &quot;5f77df3b-bc23-4a37-93d2-e9daa341ec8e&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -121,11 +111,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Unnamed" />
-      <item itemvalue="Application.Project.Main" />
-      <item itemvalue="Application.Main" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Project.Main" />
@@ -167,11 +152,11 @@
       <workItem from="1733560067995" duration="778000" />
       <workItem from="1733572733485" duration="36000" />
       <workItem from="1733573107273" duration="3288000" />
-      <workItem from="1733588943690" duration="4841000" />
-      <workItem from="1733639090713" duration="221000" />
-      <workItem from="1733639322808" duration="256000" />
-      <workItem from="1733644960787" duration="498000" />
-      <workItem from="1733740393908" duration="2654000" />
+      <workItem from="1733588943690" duration="5527000" />
+      <workItem from="1733672100994" duration="210000" />
+      <workItem from="1733674186756" duration="441000" />
+      <workItem from="1733675296198" duration="77000" />
+      <workItem from="1733768410869" duration="6257000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -221,7 +206,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733576389065</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary=".">
+      <option name="closed" value="true" />
+      <created>1733596657797</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733596657797</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".">
+      <option name="closed" value="true" />
+      <created>1733774008661</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733774008661</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

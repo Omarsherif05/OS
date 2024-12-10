@@ -6,9 +6,9 @@ public class Process {
     private final PCB pcb;
     private final List<String> instructions;
 
-    public Process(int processId, List<String> instructions) {
+    public Process(int processId, List<String> instructions, int boundaryOne, int boundaryTwo) {
         int instructionCount = calculateInstructionCount(instructions);
-        this.pcb = new PCB(processId, instructionCount);
+        this.pcb = new PCB(processId, instructionCount, boundaryOne, boundaryTwo);
         this.instructions = instructions;
     }
 

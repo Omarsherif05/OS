@@ -17,26 +17,45 @@ public class MasterCore extends Thread {
         this.sjfScheduler = new SJFScheduler();
     }
 
-
+    @Override
     public void run() {
+
         for (SlaveCore slave : slaves) {
             slave.start();
         }
 
+        //cycle1
+        clock = 1;
+        for (SlaveCore slave : slaves) {
+            Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
+            if (nextProcess != null) {
+                slave.assignTask(nextProcess);
+            }
+        }
+        displaySystemStatus();
+        //cycle2
         while (!readyQueue.isEmpty() || anyCoreProcessing()) {
             synchronized (this) {
                 clock++;
 
                 displaySystemStatus();
 
-                Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
-                if (nextProcess != null) {
-                    SlaveCore availableCore = getAvailableSlave();
-                    if (availableCore != null) {
-                        availableCore.assignTask(nextProcess);
+                for (SlaveCore slave : slaves) {
+                    synchronized (slave) {
+                        slave.notify();
+                    }
+                }
+
+                for (SlaveCore slave : slaves) {
+                    if (slave.isIdle()) {
+                        Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
+                        if (nextProcess != null) {
+                            slave.assignTask(nextProcess);
+                        }
                     }
                 }
             }
+
 
             try {
                 Thread.sleep(100);
@@ -45,10 +64,11 @@ public class MasterCore extends Thread {
             }
         }
 
-        // Terminate slave cores
+
         for (SlaveCore slave : slaves) {
             slave.terminate();
         }
+
 
         for (SlaveCore slave : slaves) {
             try {
@@ -58,26 +78,29 @@ public class MasterCore extends Thread {
             }
         }
 
-        System.out.println("All processes completed.");
+        System.out.println("\nAll processes completed.");
     }
+
+
 
     private void displaySystemStatus() {
         System.out.println("\nClock Cycle: " + clock);
-        System.out.println("Ready Queue: " + readyQueue.getProcesses());
+
+
+        System.out.print("Ready Queue: ");
+        int i = 1;
+        for (Process process : readyQueue.getProcesses()) {
+            System.out.print("P" + i++ + " ");
+        }
+        System.out.println();
+
+
         for (SlaveCore slave : slaves) {
-            String status = slave.isIdle() ? "Idle" : "Executing Process " + slave.getCurrentProcessId();
+            String status = slave.isIdle() ? "Idle" : "Executing Process P" + slave.getCurrentProcessId();
             System.out.println("Core " + slave.getCoreId() + ": " + status);
         }
     }
 
-    private SlaveCore getAvailableSlave() {
-        for (SlaveCore slave : slaves) {
-            if (slave.isIdle()) {
-                return slave;
-            }
-        }
-        return null;
-    }
 
     private boolean anyCoreProcessing() {
         for (SlaveCore slave : slaves) {

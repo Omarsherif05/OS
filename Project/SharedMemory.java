@@ -9,8 +9,11 @@ public class SharedMemory {
         memory.put(variable, value);
     }
 
-    public Double get(String variable) {
-        return memory.getOrDefault(variable, 0.0);
+    public synchronized double get(String variable) {
+        if (!memory.containsKey(variable)) {
+            throw new IllegalArgumentException("Variable '" + variable + "' is not initialized");
+        }
+        return memory.get(variable);
     }
 
     public Double add(String var1, String var2) {
