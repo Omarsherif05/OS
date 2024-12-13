@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c3c0369-6404-4542-9d1d-a0e520444f59" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/Project/ProcessIdGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/PCB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/SlaveCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/SlaveCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/MasterCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Process.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/PCB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/PCB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Process.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +114,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Project.Main" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Project.Main" />

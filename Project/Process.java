@@ -7,8 +7,9 @@ public class Process {
     private final List<String> instructions;
 
     public Process(int processId, List<String> instructions, int boundaryOne, int boundaryTwo) {
+        int generatedProcessId = ProcessIdGenerator.generateId();
         int instructionCount = calculateInstructionCount(instructions);
-        this.pcb = new PCB(processId, instructionCount, boundaryOne, boundaryTwo);
+        this.pcb = new PCB(generatedProcessId, instructionCount, boundaryOne, boundaryTwo);
         this.instructions = instructions;
     }
 
