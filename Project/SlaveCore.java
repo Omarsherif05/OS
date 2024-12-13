@@ -1,10 +1,13 @@
 package Project;
 
+import java.util.Scanner;
+
 public class SlaveCore extends Thread {
     private final int coreId;
     private final SharedMemory sharedMemory;
     private Process currentProcess;
     private boolean terminate;
+    private Scanner sc = new Scanner(System.in);
 
     public SlaveCore(int coreId, SharedMemory sharedMemory) {
         this.coreId = coreId;
@@ -108,7 +111,7 @@ public synchronized SharedMemory getSharedMemory() {
                     synchronized (System.out) {
                         System.out.print("Core " + coreId + " Enter value for " + parts[1] + ": ");
                     }
-                    double inputValue = new java.util.Scanner(System.in).nextDouble();
+                    double inputValue = sc.nextDouble();
                     sharedMemory.assign(parts[1], inputValue);
                 } else if (parts.length >= 4) {
                     double result = switch (parts[2]) {
