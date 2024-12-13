@@ -41,7 +41,7 @@ public class Parser {
             }
 
             // Create a Process from the instructions in the file
-            Process process = new Process(processId, instructions);
+            Process process = new Process(processId, instructions, 0, 0);
             readyQueue.addProcess(process);  // Add the process to the ready queue
             System.out.println("Loaded process from file: " + file.getName());
 
