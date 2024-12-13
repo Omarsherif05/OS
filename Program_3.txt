@@ -1,3 +1,3 @@
-assign a input
+assign ahhhh input
 assign b input
 print b
