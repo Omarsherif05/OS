@@ -32,7 +32,7 @@ public class SlaveCore extends Thread {
     }
 
     public synchronized int getCurrentProcessId() {
-        return currentProcess != null ? currentProcess.getProcessId() : -1;
+        return currentProcess.getProcessId();
     }
 
 
