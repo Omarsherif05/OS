@@ -6,7 +6,7 @@ public class PCB {
     private int programCounter;
     private int base;       //its in the docx
     private int limit;              //its in the docx
-    private int topBoundary;       //its in the docx
+    private int topBoundary;
 
     public PCB(int processId, int instructionCount, int base, int limit) {
         this.processId = processId;
@@ -16,6 +16,7 @@ public class PCB {
         this.limit = limit;                         //its in the docx
         this.topBoundary = base + limit;        //its in the docx
     }
+
     public int getProcessId() {
         return processId;
     }
@@ -31,6 +32,7 @@ public class PCB {
     public void incrementProgramCounter() {
         programCounter++;
     }
+
     public void incrementInstructionCount(int count) {
         this.instructionCount += count;
     }
