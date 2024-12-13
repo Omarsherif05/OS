@@ -1,103 +1,96 @@
 package Project;
 
-import java.util.List;
-
-public class MasterCore extends Thread {
-    private final ReadyQueue readyQueue;
-    private final List<SlaveCore> slaves;
-    private final SJFScheduler sjfScheduler;
-    private int clock = 0;
+public class MasterCore {
+    private int clock = 1;
+    private ReadyQueue readyQueue;
+    private SlaveCore core1;
+    private SlaveCore core2;
+    private SJFScheduler scheduler;
 
     public MasterCore(ReadyQueue readyQueue, SharedMemory sharedMemory) {
         this.readyQueue = readyQueue;
-        this.slaves = List.of(
-                new SlaveCore(1, sharedMemory),
-                new SlaveCore(2, sharedMemory)
-        );
-        this.sjfScheduler = new SJFScheduler();
+        this.core1 = new SlaveCore(1, sharedMemory);
+        this.core2 = new SlaveCore(2, sharedMemory);
+        this.scheduler = new SJFScheduler();
     }
 
     public void run() {
-        for (SlaveCore slave : slaves) {
-            slave.start();
-        }
+        synchronized (readyQueue) {
+            if (!readyQueue.isEmpty()) {
 
-        //cycle1
-        clock = 1;
-        for (SlaveCore slave : slaves) {
-            Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
-            if (nextProcess != null) {
-                slave.assignTask(nextProcess);
+                if (core1.isIdle()) {
+                    Process process = scheduler.getShortestJob(readyQueue);
+                    core1.assignTask(process);
+                }
+
+                if (core2.isIdle() && !readyQueue.isEmpty()) {
+                    Process process = scheduler.getShortestJob(readyQueue);
+                    core2.assignTask(process);
+                }
             }
         }
+
         displaySystemStatus();
 
-        //cycle2
-        while (!readyQueue.isEmpty() || anyCoreProcessing()) {
-            synchronized (this) {
-                clock++;
-                displaySystemStatus();
+        while (true) {
+            synchronized (readyQueue) {
 
-                for (SlaveCore slave : slaves) {
-                    synchronized (slave) {
-                        slave.notify();
-                    }
+                if (readyQueue.isEmpty() && core1.isIdle() && core2.isIdle()) {
+                    break;
                 }
 
-                for (SlaveCore slave : slaves) {
-                    if (slave.isIdle()) {
-                        Process nextProcess = sjfScheduler.getShortestJob(readyQueue);
-                        if (nextProcess != null) {
-                            slave.assignTask(nextProcess);
-                        }
-                    }
+
+                if (core1.isIdle() && !readyQueue.isEmpty()) {
+                    Process process = scheduler.getShortestJob(readyQueue);
+                    core1.assignTask(process);
+                }
+
+                if (core2.isIdle() && !readyQueue.isEmpty()) {
+                    Process process = scheduler.getShortestJob(readyQueue);
+                    core2.assignTask(process);
                 }
             }
 
+
+            core1.executeNextInstruction();
+            core2.executeNextInstruction();
+
+            clock++;
+            displaySystemStatus();
+
+
             try {
-                Thread.sleep(100);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
-        for (SlaveCore slave : slaves) {
-            slave.terminate();
-        }
 
-        for (SlaveCore slave : slaves) {
-            try {
-                slave.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
+        waitForCompletion();
         System.out.println("\nAll processes completed.");
     }
 
-    private synchronized void displaySystemStatus() {
-        System.out.println("\nClock Cycle: " + clock);
-
+    public void displaySystemStatus() {
+        System.out.println("Clock Cycle: " + clock);
         System.out.print("Ready Queue: ");
+
         for (Process process : readyQueue.getProcesses()) {
-            System.out.print("P" + process.getProcessId() + " ");
+            System.out.print("P" +process.getProcessId()+ " ");
         }
         System.out.println();
+        System.out.println("Core 1: " + (core1.isIdle() ? "Idle" : "Executing Process " + core1.getCurrentProcessId()));
+        System.out.println("Core 2: " + (core2.isIdle() ? "Idle" : "Executing Process " + core2.getCurrentProcessId()));
 
-        for (SlaveCore slave : slaves) {
-            String status = slave.isIdle() ? "Idle" : "Executing Process P" + slave.getCurrentProcessId();
-            System.out.println("Core " + slave.getCoreId() + ": " + status);
-        }
-        slaves.get(0).getSharedMemory().printState();
+        core1.getSharedMemory().printState();
     }
 
-    private boolean anyCoreProcessing() {
-        for (SlaveCore slave : slaves) {
-            if (!slave.isIdle()) {
-                return true;
-            }
+    public void waitForCompletion() {
+        try {
+            core1.join();
+            core2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return false;
     }
 }
