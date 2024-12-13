@@ -12,6 +12,6 @@ public class Main {
         MasterCore masterCore = new MasterCore(readyQueue, sharedMemory);
         masterCore.run();
 
-        sharedMemory.printState();
+
     }
 }
