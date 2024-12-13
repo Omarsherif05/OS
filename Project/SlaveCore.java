@@ -11,11 +11,14 @@ public class SlaveCore extends Thread {
         this.sharedMemory = sharedMemory;
         this.terminate = false;
     }
+
     public SharedMemory getSharedMemory() {
         return sharedMemory;
     }
+
     public synchronized void assignTask(Process process) {
         this.currentProcess = process;
+        notify();
     }
 
     public synchronized void terminate() {
@@ -35,7 +38,6 @@ public class SlaveCore extends Thread {
         return currentProcess != null ? currentProcess.getProcessId() : -1;
     }
 
-
     public void run() {
         while (!terminate) {
             synchronized (this) {
@@ -52,13 +54,11 @@ public class SlaveCore extends Thread {
                 }
             }
 
-
             if (currentProcess != null) {
                 executeNextInstruction();
             }
         }
     }
-
 
     private void executeNextInstruction() {
         synchronized (this) {
@@ -70,7 +70,6 @@ public class SlaveCore extends Thread {
                     currentProcess.getPcb().incrementProgramCounter();
                 }
 
-
                 if (currentProcess.getPcb().getProgramCounter() >= currentProcess.getInstructions().size()) {
                     System.out.println("Core " + coreId + " completed Process " + currentProcess.getProcessId());
                     currentProcess = null;
@@ -78,13 +77,13 @@ public class SlaveCore extends Thread {
             }
         }
 
-
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
     private void executeInstruction(String instruction) {
         synchronized (System.out) {
             try {
@@ -131,7 +130,6 @@ public class SlaveCore extends Thread {
                 throw new RuntimeException("Error in 'assign' instruction", e);
             }
         }
-
     }
 
     private void handlePrintInstruction(String[] parts) {
@@ -147,7 +145,5 @@ public class SlaveCore extends Thread {
                 throw new RuntimeException("Error in 'print' instruction", e);
             }
         }
-
     }
-
 }

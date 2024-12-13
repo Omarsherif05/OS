@@ -12,6 +12,7 @@ public class SJFScheduler {
                     minInstructionCount = instructionCount;
                     shortestJob = process;
                 }
+
             }
             if (shortestJob != null) {
                 readyQueue.removeProcess(shortestJob);

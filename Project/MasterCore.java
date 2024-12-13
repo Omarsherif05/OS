@@ -17,9 +17,7 @@ public class MasterCore extends Thread {
         this.sjfScheduler = new SJFScheduler();
     }
 
-
     public void run() {
-
         for (SlaveCore slave : slaves) {
             slave.start();
         }
@@ -33,11 +31,11 @@ public class MasterCore extends Thread {
             }
         }
         displaySystemStatus();
+
         //cycle2
         while (!readyQueue.isEmpty() || anyCoreProcessing()) {
             synchronized (this) {
                 clock++;
-
                 displaySystemStatus();
 
                 for (SlaveCore slave : slaves) {
@@ -56,7 +54,6 @@ public class MasterCore extends Thread {
                 }
             }
 
-
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -64,11 +61,9 @@ public class MasterCore extends Thread {
             }
         }
 
-
         for (SlaveCore slave : slaves) {
             slave.terminate();
         }
-
 
         for (SlaveCore slave : slaves) {
             try {
@@ -81,19 +76,14 @@ public class MasterCore extends Thread {
         System.out.println("\nAll processes completed.");
     }
 
-
-
-    private void displaySystemStatus() {
+    private synchronized void displaySystemStatus() {
         System.out.println("\nClock Cycle: " + clock);
 
-
         System.out.print("Ready Queue: ");
-        int i = 1;
         for (Process process : readyQueue.getProcesses()) {
-            System.out.print("P" +  " "+process.getProcessId());
+            System.out.print("P" + process.getProcessId() + " ");
         }
         System.out.println();
-
 
         for (SlaveCore slave : slaves) {
             String status = slave.isIdle() ? "Idle" : "Executing Process P" + slave.getCurrentProcessId();
@@ -101,7 +91,6 @@ public class MasterCore extends Thread {
         }
         slaves.get(0).getSharedMemory().printState();
     }
-
 
     private boolean anyCoreProcessing() {
         for (SlaveCore slave : slaves) {
