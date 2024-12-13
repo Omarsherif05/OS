@@ -4,16 +4,18 @@ public class PCB {
     private final int processId;
     private int instructionCount;
     private int programCounter;
-    private int[] memoryBoundaries = new int[2];        //its in the docx
+    private int base;       //its in the docx
+    private int limit;              //its in the docx
+    private int topBoundary;       //its in the docx
 
-    public PCB(int processId, int instructionCount, int boundaryOne, int boundaryTwo) {
+    public PCB(int processId, int instructionCount, int base, int limit) {
         this.processId = processId;
         this.instructionCount = instructionCount;
         this.programCounter = 0;
-        this.memoryBoundaries[0] = boundaryOne;         //its in the docx
-        this.memoryBoundaries[1] = boundaryTwo;         //its in the docx
+        this.base = base;                           //its in the docx
+        this.limit = limit;                         //its in the docx
+        this.topBoundary = base + limit;        //its in the docx
     }
-
     public int getProcessId() {
         return processId;
     }

@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2c3c0369-6404-4542-9d1d-a0e520444f59" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/PCB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Program_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Program_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Program_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Program_3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/MasterCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/MasterCore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/PCB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/PCB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Process.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SharedMemory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SharedMemory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/SlaveCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/SlaveCore.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +34,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Omarsherif05/OS.git&quot;,
-    &quot;accountId&quot;: &quot;8ae5c38d-a9e4-4ce5-ad21-d43e16f60760&quot;
+    &quot;accountId&quot;: &quot;5f77df3b-bc23-4a37-93d2-e9daa341ec8e&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -116,11 +110,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Unnamed" />
-      <item itemvalue="Application.Project.Main" />
-      <item itemvalue="Application.Main" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Project.Main" />
@@ -167,8 +156,6 @@
       <workItem from="1733674186756" duration="441000" />
       <workItem from="1733675296198" duration="77000" />
       <workItem from="1733768410869" duration="6257000" />
-      <workItem from="1734027778263" duration="3132000" />
-      <workItem from="1734074633146" duration="996000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
