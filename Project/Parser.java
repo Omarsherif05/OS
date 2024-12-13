@@ -41,7 +41,7 @@ public class Parser {
             }
 
 
-            Process process = new Process(processId, instructions);
+            Process process = new Process(processId, instructions, 0, 0);
             readyQueue.addProcess(process);
             System.out.println("Loaded process from file: " + file.getName());
 
