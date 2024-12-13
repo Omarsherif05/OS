@@ -17,7 +17,7 @@ public class MasterCore extends Thread {
         this.sjfScheduler = new SJFScheduler();
     }
 
-    @Override
+
     public void run() {
 
         for (SlaveCore slave : slaves) {
@@ -99,6 +99,7 @@ public class MasterCore extends Thread {
             String status = slave.isIdle() ? "Idle" : "Executing Process P" + slave.getCurrentProcessId();
             System.out.println("Core " + slave.getCoreId() + ": " + status);
         }
+        slaves.get(0).getSharedMemory().printState();
     }
 
 

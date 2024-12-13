@@ -11,7 +11,9 @@ public class SlaveCore extends Thread {
         this.sharedMemory = sharedMemory;
         this.terminate = false;
     }
-
+    public SharedMemory getSharedMemory() {
+        return sharedMemory;
+    }
     public synchronized void assignTask(Process process) {
         this.currentProcess = process;
     }
@@ -33,7 +35,7 @@ public class SlaveCore extends Thread {
         return currentProcess != null ? currentProcess.getProcessId() : -1;
     }
 
-    @Override
+
     public void run() {
         while (!terminate) {
             synchronized (this) {
