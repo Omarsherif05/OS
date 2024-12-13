@@ -88,9 +88,9 @@ public class MasterCore extends Thread {
 
 
         System.out.print("Ready Queue: ");
-        int i = 1;
+
         for (Process process : readyQueue.getProcesses()) {
-            System.out.print("P" + i++ + " ");
+            System.out.print("P" +process.getProcessId());
         }
         System.out.println();
 
