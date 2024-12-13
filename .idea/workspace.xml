@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="2c3c0369-6404-4542-9d1d-a0e520444f59" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Program_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Program_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/MasterCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/MasterCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/SharedMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/SharedMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/SlaveCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/SlaveCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Program_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Program_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/MasterCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/MasterCore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SJFScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SJFScheduler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SharedMemory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SharedMemory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OS/Project/SlaveCore.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +117,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Project.Main" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Project.Main" />

@@ -11,11 +11,18 @@ public class SlaveCore extends Thread {
         this.sharedMemory = sharedMemory;
         this.terminate = false;
     }
-public synchronized SharedMemory getSharedMemory() {
+
+    public SharedMemory getSharedMemory() {
         return sharedMemory;
-}
+    }
+
     public synchronized void assignTask(Process process) {
         this.currentProcess = process;
+        notify();
+    }
+
+    public synchronized void terminate() {
+        this.terminate = true;
         notify();
     }
 
@@ -53,7 +60,7 @@ public synchronized SharedMemory getSharedMemory() {
         }
     }
 
-    public void executeNextInstruction() {
+    void executeNextInstruction() {
         synchronized (this) {
             if (currentProcess != null) {
                 int pc = currentProcess.getPcb().getProgramCounter();
@@ -88,15 +95,20 @@ public synchronized SharedMemory getSharedMemory() {
                 }
 
                 switch (parts[0]) {
-                    case "assign" -> handleAssignInstruction(parts);
-                    case "print" -> handlePrintInstruction(parts);
-                    default -> throw new IllegalArgumentException("Unknown instruction: " + parts[0]);
+                    case "assign":
+                        handleAssignInstruction(parts);
+                        break;
+                    case "print":
+                        handlePrintInstruction(parts);
+                        break;
+                    default:
+
+                        throw new IllegalArgumentException("Unknown instruction: " + parts[0]);
+
                 }
             } catch (Exception e) {
-                synchronized (System.out) {
-                    System.err.println("Error in Core " + coreId + " while executing instruction '" + instruction + "': ");
-                    e.printStackTrace();
-                }
+                System.err.println("Error in Core " + coreId + " while executing instruction '" + instruction + "': ");
+                e.printStackTrace();
             }
         }
     }
@@ -104,21 +116,22 @@ public synchronized SharedMemory getSharedMemory() {
     private void handleAssignInstruction(String[] parts) {
         synchronized (sharedMemory) {
             try {
+                String processId = String.valueOf(currentProcess.getProcessId());
                 if (parts[2].equals("input")) {
                     synchronized (System.out) {
                         System.out.print("Core " + coreId + " Enter value for " + parts[1] + ": ");
                     }
                     double inputValue = new java.util.Scanner(System.in).nextDouble();
-                    sharedMemory.assign(parts[1], inputValue);
+                    sharedMemory.assign(processId, parts[1], inputValue);
                 } else if (parts.length >= 4) {
                     double result = switch (parts[2]) {
-                        case "add" -> sharedMemory.add(parts[3], parts[4]);
-                        case "subtract" -> sharedMemory.subtract(parts[3], parts[4]);
-                        case "multiply" -> sharedMemory.multiply(parts[3], parts[4]);
-                        case "divide" -> sharedMemory.divide(parts[3], parts[4]);
+                        case "add" -> sharedMemory.add(processId, parts[3], parts[4]);
+                        case "subtract" -> sharedMemory.subtract(processId, parts[3], parts[4]);
+                        case "multiply" -> sharedMemory.multiply(processId, parts[3], parts[4]);
+                        case "divide" -> sharedMemory.divide(processId, parts[3], parts[4]);
                         default -> throw new IllegalArgumentException("Unknown operation: " + parts[2]);
                     };
-                    sharedMemory.assign(parts[1], result);
+                    sharedMemory.assign(processId, parts[1], result);
                 }
             } catch (Exception e) {
                 throw new RuntimeException("Error in 'assign' instruction", e);
@@ -132,8 +145,9 @@ public synchronized SharedMemory getSharedMemory() {
                 if (parts.length < 2) {
                     throw new IllegalArgumentException("Invalid 'print' instruction format");
                 }
+                String processId = String.valueOf(currentProcess.getProcessId());
                 String variableName = parts[1];
-                double value = sharedMemory.get(variableName);
+                double value = sharedMemory.get(processId, variableName);
                 synchronized (System.out) {
                     System.out.println("Core " + coreId + " Print: " + variableName + " = " + value);
                 }
